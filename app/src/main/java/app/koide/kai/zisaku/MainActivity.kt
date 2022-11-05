@@ -17,10 +17,12 @@ class MainActivity : AppCompatActivity() {
         binding.wordbutton.setOnClickListener {
             val toSecondActivityIntent = Intent(this, Listactivity::class.java)
             startActivity(toSecondActivityIntent)
-
+        }
+        binding.quizbutton.setOnClickListener {
+            val toSecondActivityIntent = Intent(this, QuizActivityMain::class.java)
+            startActivity(toSecondActivityIntent)
         }
     }
-
 
 }
 //リリース完了勝ったな第三部完

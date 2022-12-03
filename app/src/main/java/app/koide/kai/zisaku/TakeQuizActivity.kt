@@ -1,9 +1,11 @@
 package app.koide.kai.zisaku
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.view.isVisible
 import app.koide.kai.zisaku.databinding.ActivityQuizBinding
 import app.koide.kai.zisaku.databinding.ActivityTakeQuizBinding
 import app.koide.kai.zisaku.databinding.QuizactivitymainBinding
@@ -35,10 +37,12 @@ class TakeQuizActivity : AppCompatActivity() {
 
         var mutableListEn: MutableList<String> = mutableListOf()
         var mutableListJP: MutableList<String> = mutableListOf()
+        var mutableListR: MutableList<Int> = mutableListOf()
 
         val jsonArrayEn = JSONArray(sharedPreferences.getString("En", "[]"));
         val jsonArrayJP = JSONArray(sharedPreferences.getString("JP", "[]"));
         val jsonArrayEx = JSONArray(sharedPreferences.getString("Ex", "[]"));
+
 
         for (i in 0 until jsonArrayEn.length()) {
             mutableListEn.add(jsonArrayEn.get(i) as String)
@@ -49,18 +53,82 @@ class TakeQuizActivity : AppCompatActivity() {
             Log.i("loadListJP", "[$i] -> " + mutableListJP.get(i))
         }
 
-        var Int = intent.getIntArrayExtra()
-        Collections.shuffle(int);
+        for (i in 0 until jsonArrayJP.length()) {
+            mutableListR.add(i)
 
-        //Log.i("TEST", mutableListJP.get(0))
+        }
 
-        var c = 0
-        var r = Random().nextInt(4)
-        binding.button1.text = mutableListJP.get(0).toString()
-        binding.button2.text = mutableListJP.get(1).toString()
-        binding.button3.text = mutableListJP.get(2).toString()
-        binding.button4.text = mutableListJP.get(3).toString()
-        binding.wordtext.text = mutableListEn.get(c).toString()
-        c = c + 1
+        Collections.shuffle(mutableListR)
+
+        var z = 10
+        for (i in 0..z){
+            var n = i*4
+            var a = mutableListR.get((n+1)%z)
+            var b = mutableListR.get((n+2)%z)
+            var c = mutableListR.get((n+3)%z)
+            var d = mutableListR.get((n+4)%z)
+            var r = Random().nextInt(4)
+            var e = mutableListR.get((n+r)%z)
+
+            binding.button1.text = mutableListJP.get(a).toString()
+            binding.button2.text = mutableListJP.get(b).toString()
+            binding.button3.text = mutableListJP.get(c).toString()
+            binding.button4.text = mutableListJP.get(d).toString()
+            binding.wordtext.text = mutableListEn.get(e).toString()
+
+            binding.answertext.text = mutableListJP.get(e)
+            binding.button1.setOnClickListener{
+                if (binding.answertext.text == binding.button1.text) {
+                    binding.judgeView.setImageResource(R.drawable.maru_image)
+                } else {
+                    binding.judgeView.setImageResource(R.drawable.batu_image)
+                }
+                binding.judgeView.isVisible  =true
+                binding.nextbutton.isVisible  =true
+                binding.answertext.isVisible  =true
+            }
+            binding.button2.setOnClickListener {
+                if (binding.answertext.text == binding.button2.text) {
+                    binding.judgeView.setImageResource(R.drawable.maru_image)
+                } else {
+                    binding.judgeView.setImageResource(R.drawable.batu_image)
+                }
+                binding.judgeView.isVisible  =true
+                binding.nextbutton.isVisible  =true
+                binding.answertext.isVisible  =true
+            }
+            binding.button3.setOnClickListener{
+                if (binding.answertext.text == binding.button3.text) {
+                    binding.judgeView.setImageResource(R.drawable.maru_image)
+                } else {
+                    binding.judgeView.setImageResource(R.drawable.batu_image)
+                }
+                binding.judgeView.isVisible  =true
+                binding.nextbutton.isVisible  =true
+                binding.answertext.isVisible  =true
+            }
+            binding.button4.setOnClickListener{
+                if (binding.answertext.text == binding.button4.text) {
+                    binding.judgeView.setImageResource(R.drawable.maru_image)
+                } else {
+                    binding.judgeView.setImageResource(R.drawable.batu_image)
+                }
+                binding.judgeView.isVisible  =true
+                binding.nextbutton.isVisible  =true
+                binding.answertext.isVisible  =true
+
+            }
+            binding.nextbutton.setOnClickListener {
+                if(i==z){
+                    val toSecondActivityIntent = Intent(this, ResultActivity::class.java)
+                    startActivity(toSecondActivityIntent)
+                }else{
+                    binding.judgeView.isVisible  =false
+                    binding.nextbutton.isVisible  =false
+                    binding.answertext.isVisible  =false
+                }
+            }
+        }
     }
 }
+

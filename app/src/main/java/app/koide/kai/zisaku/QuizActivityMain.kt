@@ -19,6 +19,10 @@ class QuizActivityMain : AppCompatActivity() {
             val toSecondActivityIntent = Intent(this, TakeQuizActivity::class.java)
             startActivity(toSecondActivityIntent)
         }
+        binding.quizhomebutton.setOnClickListener {
+            val toSecondActivityIntent = Intent(this, MainActivity::class.java)
+            startActivity(toSecondActivityIntent)
+        }
 
 
     }

@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_take_quiz.*
 import org.json.JSONArray
 import java.util.Collections
 import java.util.Random
+import kotlin.math.log
 
 class TakeQuizActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTakeQuizBinding
@@ -23,9 +24,8 @@ class TakeQuizActivity : AppCompatActivity() {
 
         binding = ActivityTakeQuizBinding.inflate(layoutInflater).apply { setContentView(this.root) }
 
-
+        Log.i("loopcheack0","問題なし")
         TotakeList()
-
 
     }
 
@@ -60,15 +60,21 @@ class TakeQuizActivity : AppCompatActivity() {
 
         Collections.shuffle(mutableListR)
 
+        Log.i("loopcheack","問題なし")
         var z = 10
+        var m = jsonArrayEn.length()
         for (i in 0..z){
             var n = i*4
-            var a = mutableListR.get((n+1)%z)
-            var b = mutableListR.get((n+2)%z)
-            var c = mutableListR.get((n+3)%z)
-            var d = mutableListR.get((n+4)%z)
+            var a = mutableListR.get((n+1)%m)
+            Log.i("cheackword",mutableListR.get((n+1)%m).toString())
+            var b = mutableListR.get((n+2)%m)
+            Log.i("cheackword",mutableListR.get((n+2)%m).toString())
+            var c = mutableListR.get((n+3)%m)
+            Log.i("cheackword",mutableListR.get((n+3)%m).toString())
+            var d = mutableListR.get((n+4)%m)
+            Log.i("cheackword",mutableListR.get((n+4)%m).toString())
             var r = Random().nextInt(4)
-            var e = mutableListR.get((n+r)%z)
+            var e = mutableListR.get((n+r)%m)
 
             binding.button1.text = mutableListJP.get(a).toString()
             binding.button2.text = mutableListJP.get(b).toString()
@@ -76,6 +82,7 @@ class TakeQuizActivity : AppCompatActivity() {
             binding.button4.text = mutableListJP.get(d).toString()
             binding.wordtext.text = mutableListEn.get(e).toString()
 
+            Log.i("loopcheack2","問題なし")
             binding.answertext.text = mutableListJP.get(e)
             binding.button1.setOnClickListener{
                 if (binding.answertext.text == binding.button1.text) {
@@ -116,17 +123,18 @@ class TakeQuizActivity : AppCompatActivity() {
                 binding.judgeView.isVisible  =true
                 binding.nextbutton.isVisible  =true
                 binding.answertext.isVisible  =true
-
             }
+            Log.i("loopcheack3","loopのラスト")
             binding.nextbutton.setOnClickListener {
-                if(i==z){
+                if (i < z){
+                  Log.i("nextbutton","loop完了")
+                }else{
                     val toSecondActivityIntent = Intent(this, ResultActivity::class.java)
                     startActivity(toSecondActivityIntent)
-                }else{
-                    binding.judgeView.isVisible  =false
-                    binding.nextbutton.isVisible  =false
-                    binding.answertext.isVisible  =false
                 }
+                binding.judgeView.isVisible  =false
+                binding.nextbutton.isVisible  =false
+                binding.answertext.isVisible  =false
             }
         }
     }

@@ -59,22 +59,26 @@ class TakeQuizActivity : AppCompatActivity() {
         }
 
         Collections.shuffle(mutableListR)
-
-        Log.i("loopcheack","問題なし")
-        var z = 10
+        var q = 11
+        val test = q+1
+       // Log.i("loopcheack","問題なし")
+        var test2 = 0
         var m = jsonArrayEn.length()
-        for (i in 0..z){
-            var n = i*4
-            var a = mutableListR.get((n+1)%m)
-            Log.i("cheackword",mutableListR.get((n+1)%m).toString())
-            var b = mutableListR.get((n+2)%m)
-            Log.i("cheackword",mutableListR.get((n+2)%m).toString())
-            var c = mutableListR.get((n+3)%m)
-            Log.i("cheackword",mutableListR.get((n+3)%m).toString())
-            var d = mutableListR.get((n+4)%m)
-            Log.i("cheackword",mutableListR.get((n+4)%m).toString())
+
+
+
+        if (test2<q) {
+            var n = test2 * 4
+            var a = mutableListR.get((n + 1) % m)
+            //Log.i("cheackword",mutableListR.get((n+1)%m).toString())
+            var b = mutableListR.get((n + 2) % m)
+            // Log.i("cheackword",mutableListR.get((n+2)%m).toString())
+            var c = mutableListR.get((n + 3) % m)
+            // Log.i("cheackword",mutableListR.get((n+3)%m).toString())
+            var d = mutableListR.get((n + 4) % m)
+            //Log.i("cheackword",mutableListR.get((n+4)%m).toString())
             var r = Random().nextInt(4)
-            var e = mutableListR.get((n+r)%m)
+            var e = mutableListR.get((n + r) % m)
 
             binding.button1.text = mutableListJP.get(a).toString()
             binding.button2.text = mutableListJP.get(b).toString()
@@ -82,17 +86,17 @@ class TakeQuizActivity : AppCompatActivity() {
             binding.button4.text = mutableListJP.get(d).toString()
             binding.wordtext.text = mutableListEn.get(e).toString()
 
-            Log.i("loopcheack2","問題なし")
+            //Log.i("loopcheack2","問題なし")
             binding.answertext.text = mutableListJP.get(e)
-            binding.button1.setOnClickListener{
+            binding.button1.setOnClickListener {
                 if (binding.answertext.text == binding.button1.text) {
                     binding.judgeView.setImageResource(R.drawable.maru_image)
                 } else {
                     binding.judgeView.setImageResource(R.drawable.batu_image)
                 }
-                binding.judgeView.isVisible  =true
-                binding.nextbutton.isVisible  =true
-                binding.answertext.isVisible  =true
+                binding.judgeView.isVisible = true
+                binding.nextbutton.isVisible = true
+                binding.answertext.isVisible = true
             }
             binding.button2.setOnClickListener {
                 if (binding.answertext.text == binding.button2.text) {
@@ -100,42 +104,44 @@ class TakeQuizActivity : AppCompatActivity() {
                 } else {
                     binding.judgeView.setImageResource(R.drawable.batu_image)
                 }
-                binding.judgeView.isVisible  =true
-                binding.nextbutton.isVisible  =true
-                binding.answertext.isVisible  =true
+                binding.judgeView.isVisible = true
+                binding.nextbutton.isVisible = true
+                binding.answertext.isVisible = true
             }
-            binding.button3.setOnClickListener{
+            binding.button3.setOnClickListener {
                 if (binding.answertext.text == binding.button3.text) {
                     binding.judgeView.setImageResource(R.drawable.maru_image)
                 } else {
                     binding.judgeView.setImageResource(R.drawable.batu_image)
                 }
-                binding.judgeView.isVisible  =true
-                binding.nextbutton.isVisible  =true
-                binding.answertext.isVisible  =true
+                binding.judgeView.isVisible = true
+                binding.nextbutton.isVisible = true
+                binding.answertext.isVisible = true
             }
-            binding.button4.setOnClickListener{
+            binding.button4.setOnClickListener {
                 if (binding.answertext.text == binding.button4.text) {
                     binding.judgeView.setImageResource(R.drawable.maru_image)
                 } else {
                     binding.judgeView.setImageResource(R.drawable.batu_image)
                 }
-                binding.judgeView.isVisible  =true
-                binding.nextbutton.isVisible  =true
-                binding.answertext.isVisible  =true
+                binding.judgeView.isVisible = true
+                binding.nextbutton.isVisible = true
+                binding.answertext.isVisible = true
             }
-            Log.i("loopcheack3","loopのラスト")
+            Log.i("loopcheack3", "loopのラスト")
+
+
             binding.nextbutton.setOnClickListener {
-                if (i < z){
-                  Log.i("nextbutton","loop完了")
-                }else{
-                    val toSecondActivityIntent = Intent(this, ResultActivity::class.java)
-                    startActivity(toSecondActivityIntent)
-                }
-                binding.judgeView.isVisible  =false
-                binding.nextbutton.isVisible  =false
-                binding.answertext.isVisible  =false
+
+                binding.judgeView.isVisible = false
+                binding.nextbutton.isVisible = false
+                binding.answertext.isVisible = false
+                var test2 = test2+1
+                Log.i("nextbutton", "" + n)
             }
+        }else{
+            val toSecondActivityIntent = Intent(this, ResultActivity::class.java)
+            startActivity(toSecondActivityIntent)
         }
     }
 }

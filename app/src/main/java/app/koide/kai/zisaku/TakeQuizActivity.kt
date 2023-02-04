@@ -17,6 +17,19 @@ import kotlin.math.log
 
 class TakeQuizActivity : AppCompatActivity() {
 
+
+    private var mutableListEn: MutableList<String> = mutableListOf()
+    private var mutableListJP: MutableList<String> = mutableListOf()
+    private var mutableListR: MutableList<Int> = mutableListOf()
+
+    private var jsonArrayEn = JSONArray("""[""]""")
+    private var jsonArrayJP = JSONArray("""[""]""")
+    private var jsonArrayEx = JSONArray("""[""]""")
+
+    private var q = 4
+    private var counter = 0
+    private var matu = 0
+
     private lateinit var binding: ActivityTakeQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -28,14 +41,9 @@ class TakeQuizActivity : AppCompatActivity() {
         Log.i("loopcheack0","問題なし")
         val sharedPreferences = this.getSharedPreferences("test", Context.MODE_PRIVATE)
 
-        var mutableListEn: MutableList<String> = mutableListOf()
-        var mutableListJP: MutableList<String> = mutableListOf()
-        var mutableListR: MutableList<Int> = mutableListOf()
-
-        val jsonArrayEn = JSONArray(sharedPreferences.getString("En", "[]"));
-        val jsonArrayJP = JSONArray(sharedPreferences.getString("JP", "[]"));
-        val jsonArrayEx = JSONArray(sharedPreferences.getString("Ex", "[]"));
-
+        jsonArrayEn = JSONArray(sharedPreferences.getString("En", "[]"));
+        jsonArrayJP = JSONArray(sharedPreferences.getString("JP", "[]"));
+        jsonArrayEx = JSONArray(sharedPreferences.getString("Ex", "[]"));
 
         for (i in 0 until jsonArrayEn.length()) {
             mutableListEn.add(jsonArrayEn.get(i) as String)
@@ -48,36 +56,37 @@ class TakeQuizActivity : AppCompatActivity() {
 
         for (i in 0 until jsonArrayJP.length()) {
             mutableListR.add(i)
-
         }
-
-        Collections.shuffle(mutableListR)
-        var q = 4
-        // Log.i("loopcheack","問題なし")
-        var counter = 0
-        var long = jsonArrayEn.length()
-        var matu = 0
-        Question(matu)
-
+        mutableListR.shuffle()
+        //Collections.shuffle(mutableListR)
+        Log.i("mutable",mutableListR.toString())
+        Question()
 
     }
 
 
 
 
-    private fun Question(x=matu) {
+    private fun Question() {
+        var long = jsonArrayEn.length()
+        Log.i("cheackQuestion","Question到達")
             //var n = counter*4
-            var a = mutableListR.get(((counter*4 + 1) % long)-1)
-            //Log.i("cheackword",mutableListR.get((n+1)%m).toString())
-            var b = mutableListR.get(((counter*4 + 2) % long)-1)
-            // Log.i("cheackword",mutableListR.get((n+2)%m).toString())
-            var c = mutableListR.get(((counter*4 + 3) % long)-1)
-            // Log.i("cheackword",mutableListR.get((n+3)%m).toString())
-            var d = mutableListR.get(((counter*4 + 4) % long)-1)
+        var Ia = counter*4 % long
+        var Ib = (counter*4 + 1)%long
+        var Ic = (counter*4 + 2)%long
+        var Id = (counter*4 + 3)%long
+        var r = (0..3).random()
+        var Ir = (counter*4 + r)%long
+            var a = mutableListR.get(Ia)
+            //Log.i("cheackword1",mutableListR.get(Ia))
+            var b = mutableListR.get(Ib)
+            //Log.i("cheackword2",mutableListR.get((counter*4+1)%long).toString())
+            var c = mutableListR.get(Ic)
+             //Log.i("cheackword3",mutableListR.get((counter*4+2)%long).toString())
+            var d = mutableListR.get(Id)
             //Log.i("cheackword",mutableListR.get((n+4)%m).toString())
-            var r = Random().nextInt(4)
-            var e = mutableListR.get(((counter*4 + r) % long)-1)
-
+            var e = mutableListR.get(Ir)
+        Log.i("cheackQuestion","問題出題")
         //選択肢を呼び出す
             binding.button1.text = mutableListJP.get(a).toString()
             binding.button2.text = mutableListJP.get(b).toString()
@@ -101,7 +110,6 @@ class TakeQuizActivity : AppCompatActivity() {
                 binding.judgeView.isVisible = true
                 binding.nextbutton.isVisible = true
                 binding.answertext.isVisible = true
-
             }
             binding.button2.setOnClickListener {
                 if (binding.answertext.text == binding.button2.text) {
@@ -112,7 +120,6 @@ class TakeQuizActivity : AppCompatActivity() {
                 binding.judgeView.isVisible = true
                 binding.nextbutton.isVisible = true
                 binding.answertext.isVisible = true
-
             }
             binding.button3.setOnClickListener {
                 if (binding.answertext.text == binding.button3.text) {
@@ -123,7 +130,6 @@ class TakeQuizActivity : AppCompatActivity() {
                 binding.judgeView.isVisible = true
                 binding.nextbutton.isVisible = true
                 binding.answertext.isVisible = true
-
             }
             binding.button4.setOnClickListener {
 
@@ -135,7 +141,6 @@ class TakeQuizActivity : AppCompatActivity() {
                 binding.judgeView.isVisible = true
                 binding.nextbutton.isVisible = true
                 binding.answertext.isVisible = true
-
             }
             Log.i("loopcheack3", "loopのラスト")
 
@@ -147,32 +152,8 @@ class TakeQuizActivity : AppCompatActivity() {
                         binding.judgeView.isVisible = false
                         binding.nextbutton.isVisible = false
                         binding.answertext.isVisible = false
-                        //var test2 = test2+1
-                        //Log.i("nextbutton", "" + n)
                         counter++
-                        var a = mutableListR.get(((counter*4 + 1) % long)-1)
-                        //Log.i("cheackword",mutableListR.get((n+1)%m).toString())
-                        var b = mutableListR.get(((counter*4 + 2) % long)-1)
-                        // Log.i("cheackword",mutableListR.get((n+2)%m).toString())
-                        var c = mutableListR.get(((counter*4 + 3) % long)-1)
-                        // Log.i("cheackword",mutableListR.get((n+3)%m).toString())
-                        var d = mutableListR.get(((counter*4 + 4) % long)-1)
-                        //Log.i("cheackword",mutableListR.get((n+4)%m).toString())
-                        var r = Random().nextInt(4)
-                        var e = mutableListR.get(((counter*4 + r) % long)-1)
-
-                        Log.i("loop", "")
-                        //選択肢を呼び出す
-                        binding.button1.text = mutableListJP.get(a).toString()
-                        binding.button2.text = mutableListJP.get(b).toString()
-                        binding.button3.text = mutableListJP.get(c).toString()
-                        binding.button4.text = mutableListJP.get(d).toString()
-                        //出題する単語（英語）を呼び出す
-                        binding.wordtext.text = mutableListEn.get(e).toString()
-                        //出題した単語の日本語訳を呼び出す
-                        binding.answertext.text = mutableListJP.get(e)
-                        //Log.i("loopcheack2","問題なし")
-
+                        Question()
                     }
                 }
 

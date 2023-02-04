@@ -29,6 +29,7 @@ class TakeQuizActivity : AppCompatActivity() {
     private var q = 4
     private var counter = 0
     private var matu = 0
+    private var right = 0
 
     private lateinit var binding: ActivityTakeQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -106,6 +107,7 @@ class TakeQuizActivity : AppCompatActivity() {
                     binding.judgeView.setImageResource(R.drawable.maru_image)
                 } else {
                     binding.judgeView.setImageResource(R.drawable.batu_image)
+                    right++
                 }
                 binding.judgeView.isVisible = true
                 binding.nextbutton.isVisible = true
@@ -114,6 +116,7 @@ class TakeQuizActivity : AppCompatActivity() {
             binding.button2.setOnClickListener {
                 if (binding.answertext.text == binding.button2.text) {
                     binding.judgeView.setImageResource(R.drawable.maru_image)
+                    right++
                 } else {
                     binding.judgeView.setImageResource(R.drawable.batu_image)
                 }
@@ -124,6 +127,7 @@ class TakeQuizActivity : AppCompatActivity() {
             binding.button3.setOnClickListener {
                 if (binding.answertext.text == binding.button3.text) {
                     binding.judgeView.setImageResource(R.drawable.maru_image)
+                    right++
                 } else {
                     binding.judgeView.setImageResource(R.drawable.batu_image)
                 }
@@ -135,6 +139,7 @@ class TakeQuizActivity : AppCompatActivity() {
 
                 if (binding.answertext.text == binding.button4.text) {
                     binding.judgeView.setImageResource(R.drawable.maru_image)
+                    right++
                 } else {
                     binding.judgeView.setImageResource(R.drawable.batu_image)
                 }

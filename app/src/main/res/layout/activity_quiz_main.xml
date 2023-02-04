@@ -10,12 +10,12 @@
         android:id="@+id/Startbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="300dp"
         android:text="start"
-        app:layout_constraintBottom_toTopOf="@+id/quizhomebutton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -35,10 +35,30 @@
         android:id="@+id/quizhomebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="70dp"
         android:text="ホーム画面へ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/tenqbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10問出題"
+        app:layout_constraintBottom_toTopOf="@+id/quizhomebutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fiveqbutton" />
+
+    <Button
+        android:id="@+id/fiveqbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="５問出題"
+        app:layout_constraintBottom_toTopOf="@+id/tenqbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Startbutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

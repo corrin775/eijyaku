@@ -20,5 +20,7 @@ class ResultActivity : AppCompatActivity() {
             val toSecondActivityIntent = Intent(this, TakeQuizActivity::class.java)
             startActivity(toSecondActivityIntent)
         }
+        binding.Qview.text = q
+        binding.Countanswer.text = right
     }
 }

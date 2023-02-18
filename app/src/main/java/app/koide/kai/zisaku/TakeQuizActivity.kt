@@ -69,6 +69,8 @@ class TakeQuizActivity : AppCompatActivity() {
 
 
     private fun Question() {
+        val toSecondActivityIntent = Intent(this, ResultttActivity::class.java)
+
         var long = jsonArrayEn.length()
         Log.i("cheackQuestion","Question到達")
             //var n = counter*4
@@ -151,7 +153,9 @@ class TakeQuizActivity : AppCompatActivity() {
 
                 binding.nextbutton.setOnClickListener {
                     if (counter==q){
-                        val toSecondActivityIntent = Intent(this, ResultActivity::class.java)
+
+                        toSecondActivityIntent.putExtra("Qcount",(q+1).toString())
+                        toSecondActivityIntent.putExtra("Rcount",right.toString())
                         startActivity(toSecondActivityIntent)
                     }else {
                         binding.judgeView.isVisible = false

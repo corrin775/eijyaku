@@ -9,6 +9,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Zisaku">
         <activity
+            android:name=".ResultttActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ResultQActivity2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ResultActivity"
             android:exported="false">
             <meta-data

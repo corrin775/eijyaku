@@ -13,7 +13,7 @@
         android:visibility="invisible"
         app:layout_constraintBaseline_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/maru_image" />
@@ -22,7 +22,7 @@
         android:id="@+id/wordtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:text="TextView"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,16 +33,16 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="次の単語の和訳はどれでしょう"
-        android:textSize="30dp"
+        android:text="次の単語の和訳は"
+        android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/judgeView" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="99dp"
-        android:layout_height="95dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="180dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,13 +51,13 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Button" />
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Button" />
 
@@ -65,8 +65,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="95dp"
-        android:layout_height="98dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="180dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +75,7 @@
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Button" />
 
@@ -107,5 +107,15 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="どれでしょう"
+        android:textSize="45sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

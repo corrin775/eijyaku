@@ -7,82 +7,83 @@
     tools:context=".ResultActivity">
 
     <TextView
+        android:id="@+id/answer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="91dp"
+        android:text="あなたの正解数は"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="91dp"
         android:text="あなたの正解数は"
-        app:layout_constraintBottom_toTopOf="@+id/Countanswer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Qview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="235dp"
-        android:layout_marginEnd="120dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="57dp"
         android:text="問中"
-        app:layout_constraintBottom_toTopOf="@+id/Countanswer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answer"
-        app:layout_constraintVertical_bias="0.554" />
+        app:layout_constraintStart_toEndOf="@+id/QcountView"
+        app:layout_constraintTop_toBottomOf="@+id/QcountView" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/QcountView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/Qview"
-        app:layout_constraintTop_toBottomOf="@+id/answer"
-        tools:layout_editor_absoluteX="176dp" />
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="56dp"
+        android:text="qcount"
+        app:layout_constraintStart_toStartOf="@+id/answer"
+        app:layout_constraintTop_toBottomOf="@+id/answer" />
 
     <TextView
         android:id="@+id/Countanswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/continuebutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.747" />
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="53dp"
+        android:text="rcount"
+        app:layout_constraintBottom_toTopOf="@+id/number"
+        app:layout_constraintEnd_toStartOf="@+id/number" />
 
     <TextView
         android:id="@+id/number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="235dp"
         android:layout_marginEnd="120dp"
+        android:layout_marginBottom="52dp"
         android:text="問でした"
         app:layout_constraintBottom_toTopOf="@+id/continuebutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Countanswer" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/buckbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
         android:layout_marginBottom="75dp"
         android:text="ホームへ"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/continuebutton" />
 
     <Button
         android:id="@+id/continuebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="50dp"
         android:text="To be continue"
         app:layout_constraintBottom_toTopOf="@+id/buckbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/number" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

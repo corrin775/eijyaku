@@ -26,13 +26,17 @@ class TakeQuizActivity : AppCompatActivity() {
     private var jsonArrayJP = JSONArray("""[""]""")
     private var jsonArrayEx = JSONArray("""[""]""")
 
-    private var q = 4
+
+    private val q =4
     private var counter = 0
     private var matu = 0
     private var right = 0
 
     private lateinit var binding: ActivityTakeQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_take_quiz)
@@ -152,17 +156,19 @@ class TakeQuizActivity : AppCompatActivity() {
             Log.i("loopcheack3", "loopのラスト")
 
                 binding.nextbutton.setOnClickListener {
-                    if (counter==q){
+                    if (counter == q){
 
-                        toSecondActivityIntent.putExtra("Qcount",(q+1).toString())
+                        toSecondActivityIntent.putExtra("Qcount",(q.toInt()+1).toString())
                         toSecondActivityIntent.putExtra("Rcount",right.toString())
                         startActivity(toSecondActivityIntent)
+
                     }else {
                         binding.judgeView.isVisible = false
                         binding.nextbutton.isVisible = false
                         binding.answertext.isVisible = false
                         counter++
                         Question()
+
                     }
                 }
 

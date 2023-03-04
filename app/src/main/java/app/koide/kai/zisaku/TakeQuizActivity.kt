@@ -6,14 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isVisible
-import app.koide.kai.zisaku.databinding.ActivityQuizBinding
 import app.koide.kai.zisaku.databinding.ActivityTakeQuizBinding
-import app.koide.kai.zisaku.databinding.QuizactivitymainBinding
-import kotlinx.android.synthetic.main.activity_take_quiz.*
 import org.json.JSONArray
-import java.util.Collections
-import java.util.Random
-import kotlin.math.log
 
 class TakeQuizActivity : AppCompatActivity() {
 

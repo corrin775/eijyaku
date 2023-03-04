@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import app.koide.kai.zisaku.databinding.ActivityMainBinding
 import app.koide.kai.zisaku.databinding.ActivityQuizMainBinding
-import app.koide.kai.zisaku.databinding.QuizactivitymainBinding
+
 
 class QuizActivityMain : AppCompatActivity() {
     private lateinit var binding: ActivityQuizMainBinding
